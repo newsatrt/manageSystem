@@ -1,0 +1,73 @@
+.wrapper {
+  display: flex;
+  height: 100%;
+}
+
+.left {
+  width: 55%;
+  background: url("../assets/brown-flower-bg.jpg") no-repeat;
+  background-size: cover;
+}
+
+.left .logoBox {
+  text-align: center;
+  font-size: 55px;
+  font-weight: bold;
+  color: #fff;
+  position: relative;
+  top: 50%;
+  margin-top: -160px;
+}
+
+.left .logoBox div{
+  margin-top: -45px;
+}
+
+.right {
+  width: 45%;
+  flex: 1;
+}
+
+.right .loginBox {
+  width: 50%;
+  max-width: 500px;
+  min-width: 400px;
+  margin: -200px auto;
+  padding: 30px;
+  position: relative;
+  top: 50%;
+}
+
+.right .loginBox h1 {
+  text-align: center;
+  margin: 2rem 0;
+  font-size: 2rem;
+}
+
+.right .loginBox .description {
+  font-size: 1rem;
+}
+
+.right .loginBox form {
+  margin: 1rem 0;
+}
+
+.right .loginBox input {
+  height: 40px;
+  font-size: 16px;
+}
+
+.right .loginBox .has-success.has-feedback:after,
+.right .loginBox .has-warning.has-feedback:after,
+.right .loginBox .has-error.has-feedback:after,
+.right .loginBox .is-validating.has-feedback:after {
+  height: 40px;
+  line-height: 40px;
+}
+
+.right .loginBox Button {
+  width: 100%;
+  font-size: 16px;
+  padding: 6px 15px 7px 15px;
+}
+

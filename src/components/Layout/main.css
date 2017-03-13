@@ -1,0 +1,23 @@
+.header {
+
+}
+
+.siderbutton {
+  height: 47px;
+  width: 47px;
+  line-height: 47px;
+  text-align: center;
+  font-size: 18px;
+  cursor: pointer;
+  position: absolute;
+  transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+}
+
+.siderbutton:hover {
+   color: #2db7f5;
+ }
+
+.header-sub-menu {
+  float: right !important;
+}
