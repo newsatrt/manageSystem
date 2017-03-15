@@ -17,12 +17,7 @@ export default {
     navOpenKeys: JSON.parse(localStorage.getItem('navOpenKeys') || '[]')
   },
   subscriptions: {
-    setup ({dispatch}) {
-      dispatch({type: 'queryUser'})
-      /*window.onresize = function () {
-        dispatch({type: 'changeNavbar'})
-      }*/
-    }
+
   },
   effects: {
     *login ({
@@ -47,7 +42,6 @@ export default {
     *queryUser ({
       payload
     }, {call, put}) {
-      yield put({type: 'showLoading'})
       const data = yield call(userInfo, parse(payload))
       if (data.success) {
         yield put({
@@ -59,8 +53,6 @@ export default {
           }
         })
       }
-
-      yield put({type: 'hideLoading'})
     },
     *logout ({
       payload
@@ -129,18 +121,6 @@ export default {
       return {
         ...state,
         loginButtonLoading: true
-      }
-    },
-    showLoading (state) {
-      return {
-        ...state,
-        loading: true
-      }
-    },
-    hideLoading (state) {
-      return {
-        ...state,
-        loading: false
       }
     },
     handleSwitchSider (state) {

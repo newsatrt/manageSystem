@@ -13,10 +13,3 @@ export function logout (params) {
     data: params
   })
 }
-
-export function userInfo (params) {
-  return request('/api/userInfo', {
-    method: 'get',
-    data: params
-  })
-}

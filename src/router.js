@@ -26,6 +26,7 @@ function RouterConfig({history, app}) {
           name: 'HomePage',
           getComponent(nextState, cb) {
             require.ensure([], (require) => {
+              registerModel(app, require('./models/home'));
               cb(null, require('./routes/Home'));
             },'HomePage');
           },
@@ -51,7 +52,16 @@ function RouterConfig({history, app}) {
           cb(null, require('./routes/Login'));
         });
       },
-    }
+    },
+    {
+      path: '/index',
+      name: 'IndexPage',
+      getComponent(nextState, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./routes/IndexPage'));
+        });
+      },
+    },
   ];
  /* const routes = [
     {

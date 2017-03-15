@@ -1,25 +1,35 @@
 {
+  "autoprefixer": null,
+  "define": null,
+  "disableCSSModules": false,
   "entry": "src/index.js",
   "env": {
-    "development": {
-      "extraBabelPlugins": [
-        "dva-hmr",
-        "transform-runtime",
-        ["import", { "libraryName": "antd", "style": "css" }]
-      ]
+      "development": {
+        "extraBabelPlugins": [
+          "dva-hmr",
+          "transform-runtime",
+          ["import", { "libraryName": "antd", "style": "css" }]
+        ]
+      },
+      "production": {
+        "extraBabelPlugins": [
+          "transform-runtime",
+          ["import", { "libraryName": "antd", "style": "css" }]
+        ]
+      }
     },
-    "production": {
-      "extraBabelPlugins": [
-        "transform-runtime",
-        ["import", { "libraryName": "antd", "style": "css" }]
-      ]
-    }
-  },
+  "extraBabelPlugins": [],
+  "extraPostCSSPlugins": [],
+  "externals": null,
+  "multipage": false,
+  "publicPath": "/",
   "proxy": {
     "/api": {
       "target": "http://jsonplaceholder.typicode.com/",
       "changeOrigin": true,
       "pathRewrite": { "^/api" : "" }
     }
-  }
+  },
+  "outputPath": "./dist",
+  "theme": null
 }

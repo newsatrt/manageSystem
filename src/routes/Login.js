@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react'
 import {Button, Row, Form, Input} from 'antd'
+import {connect} from 'dva'
 import styles from './Login.css'
 import logoText from '../assets/icon/100.png'
 
@@ -7,12 +8,16 @@ const FormItem = Form.Item
 
 const login = ({
   loginButtonLoading,
-  onOk,
   form: {
     getFieldDecorator,
     validateFieldsAndScroll
   }
 }) => {
+
+  function onOk (data) {
+    dispatch({type: 'app/login', payload: data})
+  }
+
   function handleOk() {
     validateFieldsAndScroll((errors, values) => {
       if (errors) {
@@ -71,7 +76,6 @@ const login = ({
 login.propTypes = {
   form: PropTypes.object,
   loginButtonLoading: PropTypes.bool,
-  onOk: PropTypes.func
 }
 
-export default Form.create()(login)
+export default connect(({login}) => ({login}))(Form.create()(login));

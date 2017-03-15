@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Layout.less';
+import styles from './Layout.css';
 import Header from './Header';
 
 function MainLayout({ children, location }) {
