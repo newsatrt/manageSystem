@@ -1,0 +1,16 @@
+.wordBlock {
+  padding: 0 15px;
+}
+
+.wordItem {
+  padding: 3px 5px;
+  background: #fff;
+  border-radius: 3px;
+  color: #4a4a4a;
+  margin-right: 4px;
+}
+
+.fillActive {
+  background: #0089ff;
+  color: #fff;
+}

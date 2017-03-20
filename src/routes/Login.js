@@ -7,6 +7,7 @@ import logoText from '../assets/icon/100.png'
 const FormItem = Form.Item
 
 const login = ({
+  dispatch,
   loginButtonLoading,
   form: {
     getFieldDecorator,
@@ -14,8 +15,9 @@ const login = ({
   }
 }) => {
 
-  function onOk (data) {
+  function onOk(data) {
     dispatch({type: 'app/login', payload: data})
+    window.location.href = "/";
   }
 
   function handleOk() {
@@ -62,7 +64,7 @@ const login = ({
               })(<Input size='large' type='password' onPressEnter={handleOk} placeholder='Password'/>)}
             </FormItem>
             <Row>
-              <Button type='default' size='large' loading={loginButtonLoading}>
+              <Button type='default' size='large' loading={loginButtonLoading} onClick={handleOk}>
                 Login
               </Button>
             </Row>

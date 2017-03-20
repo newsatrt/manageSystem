@@ -31,6 +31,29 @@ function RouterConfig({history, app}) {
             },'HomePage');
           },
         },
+
+        {
+          path: 'questionBank',
+          getIndexRoute (nextState, cb) {
+            require.ensure([], (require) => {
+              registerModel(app, require('./models/questionBank/question'));
+              cb(null, require('./routes/questionBank/Question'));
+            });
+          },
+          childRoutes: [
+            {
+              path: 'question',
+              name: 'questionPage',
+              getComponent(nextState, cb) {
+                require.ensure([], (require) => {
+                  registerModel(app, require('./models/questionBank/question'));
+                  cb(null, require('./routes/questionBank/Question'));
+                },'questionPage');
+              },
+            }
+          ]
+        },
+
         {
           path: 'users',
           name: 'UsersPage',
@@ -49,6 +72,7 @@ function RouterConfig({history, app}) {
       name: 'Login',
       getComponent(nextState, cb) {
         require.ensure([], (require) => {
+          registerModel(app, require('./models/login'));
           cb(null, require('./routes/Login'));
         });
       },
@@ -59,6 +83,15 @@ function RouterConfig({history, app}) {
       getComponent(nextState, cb) {
         require.ensure([], (require) => {
           cb(null, require('./routes/IndexPage'));
+        });
+      },
+    },
+    {
+      path: '/*',
+      name: 'Login',
+      getComponent(nextState, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./routes/Login'));
         });
       },
     },

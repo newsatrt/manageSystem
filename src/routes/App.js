@@ -59,7 +59,7 @@ function App({children, location, dispatch, app}) {
         collapsible
         collapsed={collapsed}
       >
-        <div className="logo"/>
+        <div className={styles.logo}/>
         <Menus {...menusProps} />
       </Sider>
 

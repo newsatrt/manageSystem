@@ -17,6 +17,7 @@ export default {
       }
     },
     logoutSuccess (state) {
+      window.location.href = "../";
       return {
         ...state,
         login: false
@@ -29,12 +30,20 @@ export default {
         loginButtonLoading: false
       }
     },
+    showLoginButtonLoading (state) {
+      window.location.href = "../";
+      return {
+        ...state,
+        loginButtonLoading: true
+      }
+    },
   },
   effects: {
     *login ({
       payload:values
     }, {call, put}) {
       yield put({type: 'showLoginButtonLoading'})
+      console.log(values);
       const data = yield call(loginService.login, values)
       if (data.success) {
         yield put({
