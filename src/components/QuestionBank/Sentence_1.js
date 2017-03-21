@@ -9,12 +9,12 @@ const Option = Select.Option
 let cx = classNames.bind(styles);
 
 const selectBefore = (
-  <Select defaultValue="A" style={{width: 80}}>
-    <Option value="A">角色A</Option>
-    <Option value="B">角色B</Option>
-    <Option value="C">角色C</Option>
-    <Option value="D">角色D</Option>
-    <Option value="">无角色</Option>
+  <Select defaultValue="1" style={{width: 80}}>
+    <Option value="1">角色A</Option>
+    <Option value="2">角色B</Option>
+    <Option value="3">角色C</Option>
+    <Option value="4">角色D</Option>
+    <Option value="0">无角色</Option>
   </Select>
 );
 
@@ -150,7 +150,6 @@ class Sentence extends React.Component {
 
     return (
       <div>
-
         <Input placeholder="请输入英文" addonBefore={selectBefore} onChange={this.handleEnglishInputChange}
                addonAfter={<Icon type={collapsed ? "up-circle-o" : "down-circle-o"}
                                  onClick={this.handleFoldSentenceInformation}/>}

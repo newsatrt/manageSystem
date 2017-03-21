@@ -1,7 +1,3 @@
-.wordBlock {
-  padding: 0 15px;
-}
-
 .wordItem {
   padding: 3px 5px;
   background: #fff;
@@ -13,10 +9,4 @@
 .fillActive {
   background: #0089ff;
   color: #fff;
-}
-
-.wordShowBlock {
-  border-radius: 5px;
-  border: dashed;
-  padding: 15px;
 }

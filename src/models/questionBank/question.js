@@ -4,7 +4,11 @@ export default {
   state: {
 
   },
-  reducers: {},
-  effects: {},
+  reducers: {
+
+  },
+  effects: {
+
+  },
   subscriptions: {},
 };
