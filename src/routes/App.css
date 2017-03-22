@@ -11,6 +11,10 @@
   height: 100%;
 }
 
+.content {
+  height: 100%;
+}
+
 .trigger {
   font-size: 18px;
   line-height: 64px;

@@ -1,22 +1,18 @@
-.wordBlock {
-  padding: 0 15px;
+.avatar-uploader,
+.avatar-uploader-trigger,
+.avatar {
+  width: 150px;
+  height: 150px;
 }
-
-.wordItem {
-  padding: 3px 5px;
-  background: #fff;
-  border-radius: 3px;
-  color: #4a4a4a;
-  margin-right: 4px;
+.avatar-uploader {
+  display: block;
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
 }
-
-.fillActive {
-  background: #0089ff;
-  color: #fff;
-}
-
-.wordShowBlock {
-  border-radius: 5px;
-  border: dashed;
-  padding: 15px;
+.avatar-uploader-trigger {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 28px;
+  color: #999;
 }
