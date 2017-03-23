@@ -33,20 +33,27 @@ function RouterConfig({history, app}) {
         },
 
         {
-          path: 'questionBank',
+          path: 'question-bank',
           getIndexRoute (nextState, cb) {
             require.ensure([], (require) => {
-              registerModel(app, require('./models/questionBank/question'));
-              cb(null, require('./routes/questionBank/Question'));
+              cb(null, require('./routes/questionBank/QuestionLevelList'));
             });
           },
           childRoutes: [
             {
+              path: 'question-level-list',
+              name: 'questionLevelListPage',
+              getComponent(nextState, cb) {
+                require.ensure([], (require) => {
+                  cb(null, require('./routes/questionBank/QuestionLevelList'));
+                },'questionLevelListPage');
+              },
+            },{
               path: 'question',
               name: 'questionPage',
               getComponent(nextState, cb) {
                 require.ensure([], (require) => {
-                  registerModel(app, require('./models/questionBank/question'));
+                  registerModel(app, require('./models/questionBank/questions'));
                   cb(null, require('./routes/questionBank/Question'));
                 },'questionPage');
               },
@@ -96,75 +103,6 @@ function RouterConfig({history, app}) {
       },
     },
   ];
- /* const routes = [
-    {
-      path: '/index',
-      name: 'IndexPage',
-      getComponent(nextState, cb) {
-        require.ensure([], (require) => {
-          cb(null, require('./routes/IndexPage'));
-        });
-      },
-    },
-    {
-      path: '/users',
-      name: 'UsersPage',
-      getComponent(nextState, cb) {
-        require.ensure([], (require) => {
-          registerModel(app, require('./models/users'));
-          cb(null, require('./routes/Users'));
-        });
-      },
-    },
-    {
-      path: '/login',
-      name: 'Login',
-      getComponent(nextState, cb) {
-        require.ensure([], (require) => {
-          cb(null, require('./routes/Login'));
-        });
-      },
-    }/!*,
-     {
-     path: '/',
-     component: App,
-     getIndexRoute (nextState, cb) {
-     require.ensure([], (require) => {
-     cb(null, require('./routes/IndexPage'));
-     });
-     /!* require.ensure([], require => {
-     registerModel(app, require('./models/dashboard'))
-     cb(null, {component: require('./routes/dashboard')})
-     }, 'dashboard')*!/
-     require.ensure([], (require) => {
-     registerModel(app, require('./models/users'));
-     cb(null, require('./routes/Users'));
-     },'users');
-     },
-     childRoutes: [
-     {
-     path: 'index',
-     name: 'IndexPage',
-     getComponent(nextState, cb) {
-     require.ensure([], (require) => {
-     cb(null, require('./routes/IndexPage'));
-     },'IndexPage');
-     },
-     },
-     {
-     path: 'users',
-     name: 'UsersPage',
-     getComponent(nextState, cb) {
-     require.ensure([], (require) => {
-     registerModel(app, require('./models/users'));
-     cb(null, require('./routes/Users'));
-     },'UsersPage');
-     },
-     }
-     ]
-
-     }*!/
-  ];*/
 
   return <Router history={history} routes={routes}/>;
 }

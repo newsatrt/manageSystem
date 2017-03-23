@@ -5,12 +5,12 @@ module.exports = [
     icon: 'user'
   },
   {
-    key: 'questionBank',
+    key: 'question-bank',
     name: '题库',
     icon: 'database',
     child: [
       {
-        key: 'question',
+        key: 'question-level-list',
         name: '题目管理'
       },
       {

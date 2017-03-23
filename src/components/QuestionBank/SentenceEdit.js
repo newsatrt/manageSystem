@@ -119,31 +119,37 @@ export default class Sentence extends React.Component {
 
           <Input placeholder="请输入英文" onChange={this.handleEnglishInputChange} value={englishValue}/>
 
-          <OperationBlock wordList={wordList} handleWordItem={this.handleWordItem}></OperationBlock>
+          {
+            questionType == 2 ?(<OperationBlock wordList={wordList} handleWordItem={this.handleWordItem}></OperationBlock>):('')
+          }
 
           <Input placeholder="请输入中文" value={translatedContent} onChange={this.handleTranslatedContentChange}/>
 
-          <OperationBlock wordList={translatedContentList}
-                          handleWordItem={this.handleTranslatedContentItemFill}></OperationBlock>
+          {
+            questionType == 2 ?(<OperationBlock wordList={translatedContentList}
+                                                handleWordItem={this.handleTranslatedContentItemFill}></OperationBlock>):('')
+          }
 
-          <div>
-            <h4 >上传图片</h4>
+          {
+            questionType != 5 ?(<div>
+                <h4 >上传图片</h4>
+                <Upload
+                  className="avatar-uploader"
+                  name="avatar"
+                  showUploadList={false}
+                  action="http://192.168.102.107:14500/Oper/upload_file"
+                  beforeUpload={beforeUpload}
+                  onChange={this.handleChange}
+                >
+                  {
+                    imageUrl ?
+                      <img src={imageUrl} alt="" className="avatar"/> :
+                      <Icon type="plus" className="avatar-uploader-trigger"/>
+                  }
+                </Upload>
+              </div>):('')
+          }
 
-            <Upload
-              className="avatar-uploader"
-              name="avatar"
-              showUploadList={false}
-              action="http://192.168.102.107:14500/Oper/upload_file"
-              beforeUpload={beforeUpload}
-              onChange={this.handleChange}
-            >
-              {
-                imageUrl ?
-                  <img src={imageUrl} alt="" className="avatar"/> :
-                  <Icon type="plus" className="avatar-uploader-trigger"/>
-              }
-            </Upload>
-          </div>
 
           <div>
             <h4 >上传音频</h4>
@@ -157,7 +163,7 @@ export default class Sentence extends React.Component {
            * 对话题型并且设置了角色时显示
            * */}
           {
-            questionType == 3 && roleList.length > 0 ? (
+            questionType == 4 && roleList.length > 0 ? (
                 <Select defaultValue="A" style={{width: 80}}>
                   {
                     roleList.map(function (role, index) {

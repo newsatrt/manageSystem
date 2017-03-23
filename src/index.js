@@ -1,5 +1,5 @@
 import dva from 'dva';
-import { browserHistory } from 'dva/router';
+import { browserHistory,hashHistory } from 'dva/router';
 import createLoading from 'dva-loading';
 import { message } from 'antd';
 import './index.html';
@@ -9,7 +9,7 @@ const ERROR_MSG_DURATION = 3; // 3 秒
 
 // 1. Initialize
 const app = dva({
-  history: browserHistory,
+  history: hashHistory, //生产环境应该用browserHistory，需要后台配置
   onError(e) {
     /*
     * dva 里，effects 和 subscriptions 的抛错全部会走 onError hook,
