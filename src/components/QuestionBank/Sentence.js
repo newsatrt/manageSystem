@@ -7,7 +7,7 @@ export default class Sentence extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      collapsed: true,
+      collapsed: false,
     };
 
     this.handleFoldSentenceInformation = this.handleFoldSentenceInformation.bind(this);
