@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import styles from './Home.css';
-import Sentence from '../components/QuestionBank/Sentence';
+import Sentence from '../components/QuestionBank/SentenceForm';
 
 function Home() {
   return (

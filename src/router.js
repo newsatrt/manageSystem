@@ -28,7 +28,7 @@ function RouterConfig({history, app}) {
             require.ensure([], (require) => {
               registerModel(app, require('./models/home'));
               cb(null, require('./routes/Home'));
-            },'HomePage');
+            }, 'HomePage');
           },
         },
 
@@ -46,17 +46,26 @@ function RouterConfig({history, app}) {
               getComponent(nextState, cb) {
                 require.ensure([], (require) => {
                   cb(null, require('./routes/questionBank/QuestionLevelList'));
-                },'questionLevelListPage');
+                }, 'questionLevelListPage');
               },
-            },{
+            }, {
               path: 'question',
               name: 'questionPage',
               getComponent(nextState, cb) {
                 require.ensure([], (require) => {
                   registerModel(app, require('./models/questionBank/questions'));
                   cb(null, require('./routes/questionBank/Question'));
-                },'questionPage');
-              },
+                }, 'questionPage');
+              }
+            }, {
+              path: 'edit',
+              name: 'editQuestionPage',
+              getComponent(nextState, cb) {
+                require.ensure([], (require) => {
+                  registerModel(app, require('./models/questionBank/questions'));
+                  cb(null, require('./routes/questionBank/QuestionEdit'));
+                }, 'editQuestionPage');
+              }
             }
           ]
         },
@@ -68,7 +77,7 @@ function RouterConfig({history, app}) {
             require.ensure([], (require) => {
               registerModel(app, require('./models/users'));
               cb(null, require('./routes/Users'));
-            },'UsersPage');
+            }, 'UsersPage');
           },
         }
       ]

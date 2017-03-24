@@ -21,9 +21,7 @@ const ChoicesQuestion = ({items=[{}],type=4,add}) => {
         </div>
       </div>
 
-      <div>
-        这里需要添加角色
-      </div>
+
 
       <div>
         <h4>选择题</h4>
@@ -33,7 +31,8 @@ const ChoicesQuestion = ({items=[{}],type=4,add}) => {
               type:type,
               ...choice
             }
-            <ChoiceQuestion {...choiceQuestionProps} key={index}></ChoiceQuestion>
+            return ( <ChoiceQuestion {...choiceQuestionProps} key={index}></ChoiceQuestion>);
+
           })
         }
 

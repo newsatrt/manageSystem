@@ -40,7 +40,7 @@ import * as questionsService from '../../services/questions';
 export default {
   namespace: 'questions',
   state: {
-    pageStatus: 'list', //页面状态 list--列表，add--添加，edit--修改
+    pageType: 'add',
     list: [],
     total: null,
     page: null,
@@ -49,7 +49,6 @@ export default {
       type: 1,
       name: '',
       tag: [],
-      status: 2,
       items: [{
         label: 1,
         content: "",
@@ -82,7 +81,19 @@ export default {
 
   },
   reducers: {
+    handlePageType(state,action={payload:{pageType: 'add'}}){
+      return {
+        ...state,
+        ...action.payload
+      }
+    },
 
+    handleConversationsSentence(state,action){
+      return {
+        ...state.question,
+        ...action.payload
+      }
+    },
   },
   effects: {
     *patchQuestionList({ payload: { page = 1,pageSize=20,type=1 }}, { call, put }) {
@@ -98,15 +109,30 @@ export default {
         },
       });*/
     },
+    *switchPageType ({
+      payload
+    }, {put}) {
+      yield put({
+        type: 'handlePageType',
+        payload
+      })
+    },
+    *addSentence({payload},{put}){
+      console.log('addSentence~~~~~~~~~~~~~~~~~~~~~~~',payload)
+      yield put({
+        type: 'handleConversationsSentence',
+        payload
+      })
+    }
   },
   subscriptions: {
     setup({ dispatch, history }) {
       return history.listen(({ pathname, query }) => {
         console.log('subscriptions start');
-        console.log(pathname,query );
-        if (pathname === '/question-bank/question-list/') {
-          console.log(pathname,query );
+        if (pathname === '/question-bank/question/') {
          dispatch({ type: 'patchQuestionList', payload: query });
+        }else if(pathname === '/question-bank/edit/'){
+          dispatch({ type: 'switchPageType', payload: query });
         }
         console.log('subscriptions end');
       });

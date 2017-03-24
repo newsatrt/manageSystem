@@ -3,6 +3,7 @@
  */
 import React, {Component} from 'react'
 import {Table, Input,Button} from 'antd'
+import {Link} from 'dva/router'
 const Search = Input.Search;
 import styles from './QuestionList.css'
 
@@ -126,7 +127,7 @@ const columns = [{
   className: "column",
   render: (text, record) => (
     <span>
-      <a href="#">修改</a>
+      <Link to={path} query={{pageType:'edit'}}>修改</Link>
       <span className="ant-divider" />
       <a href="#">删除</a>
       <span className="ant-divider" />
@@ -146,13 +147,14 @@ for (let i = 0, len = questionList.length; i < len; i++) {
   });
 }
 
+const path = "question-bank/edit/";
 
 class QuestionList extends Component {
   render() {
     return (
       <div className={styles.tableWrapper}>
         <div className={styles.operationBlock}>
-          <Button type="primary">新增</Button>
+          <Button type="primary"><Link to={path} query={{pageType:'add'}}>新增</Link></Button>
 
           <Search
             placeholder="可根据标签和名称进行查找"

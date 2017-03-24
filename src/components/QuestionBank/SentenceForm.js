@@ -33,10 +33,17 @@ export default class Sentence extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      collapsed: true,
       wordList: [],
       translatedContentList: [],
+      questionType: 2, /* 0- 1- 2- 3- 4- */
+      content: '',
       roleList: props.roleList ? props.roleList : [],
     };
+
+    this.handleContentChange  = this.handleContentChange .bind(this);
+    this.handleWordItem = this.handleWordItem.bind(this);
+    this.handleTranslatedContentChange = this.handleTranslatedContentChange.bind(this);
   }
 
 
@@ -49,9 +56,8 @@ export default class Sentence extends React.Component {
         isActive: false
       })
     }
-
     this.setState({content: event.target.value, wordList: wordList});
-  }
+  };
 
   handleWordItem = (index) => {
     let wordList = this.state.wordList;
@@ -90,7 +96,7 @@ export default class Sentence extends React.Component {
   }
 
   render() {
-    const {content, wordList, translatedContentList, translatedContent, imageUrl, roleList} = this.state
+    const {content, wordList, translatedContentList, translatedContent, imageUrl, questionType, roleList} = this.state
 
     return (
       <div>

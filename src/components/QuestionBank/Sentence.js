@@ -1,5 +1,5 @@
 import React from 'react';
-import './Sentence.css';
+import styles from './Sentence.css';
 import { Icon} from 'antd';
 import SentenceEdit from './SentenceEdit';
 
@@ -22,11 +22,11 @@ export default class Sentence extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.wrapper}>
         {
           this.state.collapsed ? (<div>这里显示题目展示信息</div>):(<SentenceEdit {...this.props}></SentenceEdit>)
         }
-        <Icon type={this.state.collapsed ? "up-circle-o" : "down-circle-o"}
+        <Icon type={this.state.collapsed ? "up-circle-o" : "down-circle-o"} className={styles.fold}
               onClick={this.handleFoldSentenceInformation}/>
       </div>
     )

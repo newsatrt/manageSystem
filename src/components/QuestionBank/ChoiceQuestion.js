@@ -26,7 +26,7 @@ const ChoiceQuestion = ({choice = {}, type = 4}) => {
             const optionProps = {
               type: type
             }
-            <Sentence {...optionProps} key={index}></Sentence>
+            return (<Sentence {...optionProps} key={index}></Sentence>);
           })
         }
 
