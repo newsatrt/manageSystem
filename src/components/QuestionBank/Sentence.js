@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from './Sentence.css';
 import { Icon} from 'antd';
-import SentenceEdit from './SentenceEdit';
+import SentenceEdit from './SentenceForm';
 
 export default class Sentence extends React.Component {
   constructor(props) {
     super(props);
+    console.log('Sentence props' ,props);
     this.state = {
       collapsed: false,
     };

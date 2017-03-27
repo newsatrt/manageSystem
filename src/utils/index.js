@@ -1,5 +1,6 @@
 import config from './config'
 import menu from './menu'
+import questionType from './questionType'
 import request from './request'
 import classnames from 'classnames'
 import {color} from './theme'
@@ -44,5 +45,6 @@ module.exports = {
   menu,
   request,
   color,
-  classnames
+  classnames,
+  questionType
 }

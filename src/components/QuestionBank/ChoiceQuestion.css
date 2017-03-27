@@ -1,0 +1,38 @@
+.wrapper {
+  background: #eff8ff;
+  padding: 0 15px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+  flex: 1;
+}
+
+.title {
+  display: inline-block;
+  padding: 5px;
+  position: relative;
+  z-index: 10;
+  bottom: -15px;
+  left: 10px;
+  background: #eff8ff;
+  font-size: 15px;
+}
+
+.options {
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  border: 1px solid lightgrey;
+}
+
+.mark {
+  font-size: 15px;
+  border: 1px solid grey;
+  border-radius: 30px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 19px;
+  margin-right: 10px;
+}

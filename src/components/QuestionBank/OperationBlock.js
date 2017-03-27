@@ -9,7 +9,7 @@ const OperationBlock = ({wordList,handleWordItem}) => {
       <h5 className={styles.title}>设置填空</h5>
       <div className={styles.wordEditBlock}>
         {
-          wordList.map(function (word, index) {
+          wordList && wordList.map(function (word, index) {
             let wordItemClasses = cx({
               'wordItem': true,
               'fillActive': word.isActive
@@ -23,7 +23,7 @@ const OperationBlock = ({wordList,handleWordItem}) => {
 
       <div className={styles.wordShowBlock}>
         {
-          wordList.map(function (word, index) {
+          wordList && wordList.map(function (word, index) {
             let wordItemClasses = cx({
               'wordItemShow': true,
               'fillActiveShow': word.isActive

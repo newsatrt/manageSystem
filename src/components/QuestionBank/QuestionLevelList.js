@@ -5,12 +5,9 @@ import React, {Component} from 'react'
 import {Table} from 'antd'
 import {Link} from 'dva/router'
 import styles from './QuestionLevelList.css'
+import questionType from '../../utils/questionType'
 
-const questionLevelList = [
-  {value: 1, text: '读'},
-  {value: 2, text: '填空'},
-  {value: 3, text: '对话'},
-  {value: 4, text: '选择'}];
+const questionLevelList = questionType;
 
 const path = "question-bank/question/";
 
@@ -26,7 +23,7 @@ const columns = [{
   className: "column",
   render: (text, record, index) => (
     <span>
-      <Link to={path} query={{type:text.value}}>{text.text}</Link>
+      <Link to={path} query={{type:text.type}}>{text.text}</Link>
     </span>
   ),
 }];

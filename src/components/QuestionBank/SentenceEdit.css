@@ -1,0 +1,46 @@
+:global  .avatar-uploader,
+:global  .avatar-uploader-trigger,
+:global  .avatar {
+  width: 150px;
+  height: 150px;
+}
+:global .avatar-uploader {
+  display: block;
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+}
+:global .avatar-uploader-trigger {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 28px;
+  color: #999;
+}
+
+.wrapper {
+  border: 1px solid lightgrey;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  flex: 1;
+}
+
+.fold {
+  display: block;
+  margin: 5px auto 0;
+}
+
+.row {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.halfRow {
+  display: inline-block;
+  width: 50%;
+  margin-bottom: 0;
+}
+:global .ant-form-item-control-wrapper {
+  width: 100%;
+  flex: 1;
+}
