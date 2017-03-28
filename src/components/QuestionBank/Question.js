@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
-import {
-  Form, Select, Input, Switch, Radio,
-  Slider, Button, Upload, Icon,
-} from 'antd';
+import {Form, Input, Button} from 'antd';
 import styles from './Question.css';
 import ConversationsQuestion from './ConversationsQuestion';
 import ChoicesQuestion from './ChoicesQuestion';
-import questionType from '../../utils/questionType'
+import questionType from '../../utils/questionType';
 
 const FormItem = Form.Item;
 const typeList = questionType;
@@ -25,6 +22,63 @@ const Question = (props) => {
   const handleSubmit = () => {
     //处理需要提交的数据，以及验证信息
     console.log('Received values of form: ', props.question);
+    if (props.type == 2 && props.question.items) {
+      transformContentBlank(props.question.items);
+      transformTranslatedContentBlank(props.question.items);
+    }
+    console.log('处理后的数据: ', props.question);
+  };
+
+  const transformContentBlank = (items) => {
+    for (let i = 0, len = items.length; i < len; i++) {
+      if (items[i] && items[i].contentWordList) {
+        let content = '';
+        let blank = [];
+        let blankIndex = -1;
+        let contentWordList = items[i].contentWordList;
+        for (let j = 0, contentLen = contentWordList.length; j < contentLen; j++) {
+          if (contentWordList[j].value) {
+            if (j == 0 || contentWordList[j].isSpecialSymbol) {
+              content += contentWordList[j].value;
+            } else {
+              content += ' ' + contentWordList[j].value;
+            }
+
+            if (contentWordList[j].isActive) {
+              if (j - 1 > -1 && contentWordList[j - 1].isActive) {
+                for (let k = blankIndex; k < content.length; k++) {
+                  blank.push(k);
+                }
+              } else {
+                for (let k = blankIndex + 1; k < content.length; k++) {
+                  blank.push(k);
+                }
+              }
+
+            }
+            blankIndex = content.length;
+          }
+        }
+
+        items[i].content = content;
+        items[i].blank = blank;
+      }
+    }
+  };
+
+  const transformTranslatedContentBlank = (items) => {
+    for (let i = 0, len = items.length; i < len; i++) {
+      if (items[i] && items[i].translatedContentList) {
+        let blank = [];
+        let translatedContentList = items[i].translatedContentList;
+        for (let j = 0, contentLen = translatedContentList.length; j < contentLen; j++) {
+          if (translatedContentList[j].isActive) {
+            blank.push(j);
+          }
+        }
+        items[i]['translated_blank'] = blank;
+      }
+    }
   };
 
   const handleQuestionContent = () => {
@@ -38,7 +92,7 @@ const Question = (props) => {
         deleteOptions: props.deleteOptions,
         handleChoicesArticleInfoChange: props.handleChoicesArticleInfoChange,
         handleChoicesContentInfoChange: props.handleChoicesContentInfoChange,
-        handleChoicesOptionsInfoChange: props.handleChoicesOptionsInfoChange
+        handleChoicesOptionsInfoChange: props.handleChoicesOptionsInfoChange,
       };
       return (<ChoicesQuestion {...choiceProps}></ChoicesQuestion>)
     } else {
@@ -47,11 +101,11 @@ const Question = (props) => {
         roleList: props.question.roleList,
         type: props.type,
         addSentence: props.addSentence,
-        deleteSentence:props.deleteSentence,
-        addRole:props.addRole,
-        deleteRole:props.deleteRole,
-        handleSentenceInfoChange:props.handleSentenceInfoChange,
-        hanleRoleListChange:props.hanleRoleListChange,
+        deleteSentence: props.deleteSentence,
+        addRole: props.addRole,
+        deleteRole: props.deleteRole,
+        handleSentenceInfoChange: props.handleSentenceInfoChange,
+        hanleRoleListChange: props.hanleRoleListChange,
       };
       return (<ConversationsQuestion {...readProps}></ConversationsQuestion>)
     }

@@ -44,7 +44,7 @@ export default {
     list: [
       {
         "id": "\"58d20f6b0fbc9c9ed2771747\"",
-        "type": 2,
+        "type": 4,
         "level_ids": [
           "10002"
         ],
@@ -61,7 +61,7 @@ export default {
               1,
               2,
               3,
-              4
+              4, 5, 6, 7, 8
             ],
             "translated_content": "你来自哪里？",
             "translated_blank": [
@@ -69,8 +69,95 @@ export default {
               4
             ],
             "audio_url": "http:/www.baidu.com",
-            "role": "",
-            "role_name": "",
+            "role": "B",
+            "role_name": "Lily",
+            "multi": false,
+            "poster": {
+              "eimg": "http://www.baidu.com",
+              "pimg": "",
+              "himg": "",
+              "vimg": ""
+            },
+            "choices": [],
+            "options": []
+          },
+          {
+            "id": "\"58d20f6b0fbc9c9ed2771747\"",
+            "label": "",
+            "content": "Where are you from?",
+            "blank": [
+              0,
+              1,
+              2,
+              3,
+              4, 5, 6, 7, 8
+            ],
+            "translated_content": "你来自哪里？",
+            "translated_blank": [
+              3,
+              4
+            ],
+            "audio_url": "http:/www.baidu.com",
+            "role": "A",
+            "role_name": "Su",
+            "multi": false,
+            "poster": {
+              "eimg": "http://www.baidu.com",
+              "pimg": "",
+              "himg": "",
+              "vimg": ""
+            },
+            "choices": [],
+            "options": []
+          },
+          {
+            "id": "\"58d20f6b0fbc9c9ed2771748\"",
+            "label": "",
+            "content": "Where are you from?",
+            "blank": [
+              0,
+              1,
+              2,
+              3,
+              4, 5, 6, 7, 8
+            ],
+            "translated_content": "你来自哪里？",
+            "translated_blank": [
+              3,
+              4
+            ],
+            "audio_url": "http:/www.baidu.com",
+            "role": "A",
+            "role_name": "Su",
+            "multi": false,
+            "poster": {
+              "eimg": "http://www.baidu.com",
+              "pimg": "",
+              "himg": "",
+              "vimg": ""
+            },
+            "choices": [],
+            "options": []
+          },
+          {
+            "id": "\"58d20f6b0fbc9c9ed277179\"",
+            "label": "",
+            "content": "Where are you from?",
+            "blank": [
+              0,
+              1,
+              2,
+              3,
+              4, 5, 6, 7, 8
+            ],
+            "translated_content": "你来自哪里？",
+            "translated_blank": [
+              3,
+              4
+            ],
+            "audio_url": "http:/www.baidu.com",
+            "role": "B",
+            "role_name": "Lily",
             "multi": false,
             "poster": {
               "eimg": "http://www.baidu.com",
@@ -134,6 +221,88 @@ export default {
             "options": []
           }
         ]
+      },
+      {
+        "id": "\"58d20b9d0fbc9c9d10e52576\"",
+        type: '2',
+        name: '',
+        tag: [],
+        items: [
+          {
+            label: 1,
+            content: 'I have a headache and I can’t move my neck. What should I do? Should I take my temperature?',
+            blank: [
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              71,
+              72,
+              73,
+              74,
+              75,
+              76,
+              77,
+              78,
+              79,
+              80,
+              81,
+              82,
+              83,
+              84,
+              85,
+              86,
+              87,
+              88,
+              89
+            ],
+            translated_content: '我头痛，而且我脖子不能动了。我应该怎么办？我该量下体温吗？',
+            translated_blank: [
+              1,
+              2,
+              7,
+              8,
+              9,
+              10,
+              11,
+              14,
+              15,
+              16,
+              23,
+              24,
+              25,
+              26
+            ],
+            audio_url: ''
+          }
+        ],
+        pageType: 'add'
       }
     ],
     total: 2,
@@ -143,7 +312,7 @@ export default {
       type: 1,
       name: '',
       tag: [],
-      roleList: [],
+      roleList: [{key: 'A', value: ''}],
       items: [{
         label: 1,
         content: "",
@@ -158,15 +327,16 @@ export default {
         role_name: "",
         choices: [
           {
-            label: "",
+            label: "1",
             content: "",
             translated_content: "",
             audio_url: "",
             options: [
               {
-                label: "",
+                label: "A",
                 text: "",
-                audio_url: ""
+                audio_url: "",
+                is_answer: false
               }
             ]
           }
@@ -200,7 +370,7 @@ export default {
         type: 4,
         name: '',
         tag: [],
-        roleList: [{key: 1, value: ''}],
+        roleList: [{key: 'A', value: ''}],
         items: [{
           label: 1,
           content: "",
@@ -223,7 +393,7 @@ export default {
           audio_url: "",
           choices: [
             {
-              label: "",
+              label: "1",
               content: "",
               translated_content: "",
               audio_url: "",
@@ -244,10 +414,11 @@ export default {
   },
   reducers: {
     handlePageType(state, action = {payload: {pageType: 'add'}}){
-      console.log("~~~~~~~~~~~~~~ handlePageType ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",state);
+      console.log("~~~~~~~~~~~~~~ handlePageType ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", state);
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
+        question: {...state.question,...action.payload}
       }
     },
 

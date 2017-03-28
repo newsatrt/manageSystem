@@ -6,7 +6,8 @@ import {Button, Icon, Input} from 'antd';
 import Sentence from './SentenceEdit';
 import styles from './ChoiceQuestion.css';
 
-const ChoiceQuestion = ({choice, type, addOptions, deleteOptions, index:choiceIndex, handleChoicesContentInfoChange, handleChoicesOptionsInfoChange}) => {
+const ChoiceQuestion = ({choice, type, addOptions, deleteOptions, index:choiceIndex,
+  handleChoicesContentInfoChange, handleChoicesOptionsInfoChange}) => {
   const questionTitleProps = {
     type: type,
     handleSentenceInfoChange: handleChoicesContentInfoChange,
@@ -14,8 +15,21 @@ const ChoiceQuestion = ({choice, type, addOptions, deleteOptions, index:choiceIn
     ...choice
   };
 
-  const letterList = ['A','B','C','D','E','F','G','F','I','J','K','L','M','N'];
+  /*const letterList = ['A','B','C','D','E','F','G','F','I','J','K','L','M','N'];*/
   let options = choice.options;
+  const onAnswerChange = (optionsIndex) => {
+    if(options){
+      options.map(function(option,index){
+        if(index == optionsIndex){
+          option['is_answer'] = true;
+        }else {
+          option['is_answer'] = false;
+        }
+
+      });
+      handleChoicesContentInfoChange(choiceIndex,type,choice);
+    }
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -35,12 +49,13 @@ const ChoiceQuestion = ({choice, type, addOptions, deleteOptions, index:choiceIn
                 choiceIndex: choiceIndex,
                 sentenceType: 'optionSentence',
                 handleSentenceInfoChange: handleChoicesOptionsInfoChange,
+                handleAnswerChange: onAnswerChange,
                 ...option
               };
               return (
                 <div style={{display: 'flex', alignItems: 'center', width: '100%', marginBottom: '5px'}}
                      key={optionIndex}>
-                  <span className={styles.mark}>{letterList[optionIndex]}</span>
+                  <span className={styles.mark}>{option.label}</span>
                   <Sentence {...optionProps} key={choiceIndex} style={{width: '100%', flex: 1}}></Sentence>
                   <Icon type="minus-circle-o" onClick={deleteOptions.bind(null, choiceIndex, optionIndex)}
                         style={{fontSize: '17px', marginLeft: '10px'}}/>
@@ -49,6 +64,7 @@ const ChoiceQuestion = ({choice, type, addOptions, deleteOptions, index:choiceIn
               );
             })
           }
+
 
           <Button type="dashed" onClick={addOptions.bind(null, choiceIndex)}
                   style={{width: '60%', margin: '0 auto', display: 'block'}}>

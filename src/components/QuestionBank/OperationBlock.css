@@ -1,6 +1,6 @@
 .operationBlock {
   border-radius: 5px;
-  background: #fff5f4;
+  background: #ecf6fd;
   padding: 10px 15px;
   margin-bottom: 10px;
 }
@@ -10,7 +10,7 @@
 }
 
 .wordEditBlock {
-  padding: 5px 0 15px;
+  padding: 5px 0;
 }
 
 .wordBlock {
@@ -24,6 +24,8 @@
   color: #4a4a4a;
   margin-right: 4px;
   cursor: pointer;
+  display: inline-block;
+  margin-bottom: 10px;
 }
 
 .fillActive {
@@ -41,10 +43,12 @@
 .wordItemShow {
   padding: 3px 3px 1px;
   color: #4a4a4a;
+  display: inline-block;
 }
 
 .fillActiveShow {
   border-bottom: 1px solid grey;
+  color: lightgray;
 }
 
 
